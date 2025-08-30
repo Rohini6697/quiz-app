@@ -1,0 +1,30 @@
+body{
+    background-color: cornflowerblue;
+}
+.quiz-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90%;
+    color: white;
+    
+    
+}
+.quiz-top h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: normal;
+}
+.quiz-box{
+    border: 2px solid darkgoldenrod;
+    width: 500px;
+    height: auto;
+}
+.quiz-box-main{
+    display: flex;
+    justify-content: center;
+}
+.question{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

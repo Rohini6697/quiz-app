@@ -4,14 +4,38 @@ import '../../styles/home/HomeCards.css'
 import RadialBarChart from '../charts/CircleChart'
 import { RxCross2 } from "react-icons/rx"; 
 
+import { Link } from 'react-router-dom';
+import { Questions } from '../../data/Questions';
+
 const HomeCards = ({categories}) => {
   const [open,setOpen] = useState(false);
+  const [step,setStep] = useState('data');
+  const [selectedCategory,setSelectedCategory] = useState(null);
+  const [selectedDifficulty,setSelectedDifficulty] = useState(null);
+  const [filterdQuestions,setFilterdQuestions] = useState([])
+
+  const handleCategorySelect = (category) =>{
+    setSelectedCategory(category);
+    setStep('difficulty')
+  }
+
+  const handleDifficultySelect = (difficulty) => {
+    setSelectedDifficulty(difficulty)
+  }
+
+  const QuestionFilterd = Questions.filter((q) => q.category === selectedCategory && q.difficulty === selectedDifficulty)
+    setFilterdQuestions(QuestionFilterd);
+    setStep('Quiz')
+
   return (
     <>
       <div className='category-card-main'>
       {
         categories.map((data) => (
-          <div className='category-card' onClick={() => setOpen(true)}>
+          <div className='category-card' key={data} onClick={() => {
+            setOpen(true);
+            handleCategorySelect(data)
+            }}>
             <div>
               <img src={data.image} alt={data.name}/>
               <h3>{data.name}</h3>
@@ -35,33 +59,35 @@ const HomeCards = ({categories}) => {
           
       <div class="main-box container">
         <div class="button-box container">
-          <button class="button">
-            <p class="title">Easy</p>
-            <img
+          <Link to={`/quiz`}>
+            <button class="button">
+              <p class="title">Easy</p>
+              <img
               src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Handshake.png"
               alt="Handshake"
-            />
-            <p class="description">Warm-up round<br />take it easy!</p>
-          </button>
+              />
+              <p class="description">Warm-up round<br />take it easy!</p>
+            </button>
 
-          <button class="button2">
-            <p class="title">Medium</p>
+            <button class="button2">
+              <p class="title">Medium</p>
 
-            <img
-              src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20professions/Man%20Astronaut%20Light%20Skin%20Tone.png"
-              alt="Man"
-            />
-            <p class="description">Step it up<br />now it gets tricky!</p>
-          </button>
+              <img
+                src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20professions/Man%20Astronaut%20Light%20Skin%20Tone.png"
+                alt="Man"
+              />
+              <p class="description">Step it up<br />now it gets tricky!</p>
+            </button>
 
-          <button class="button3">
-            <p class="title">hard</p>
-            <img
-              src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Locked.png"
-              alt="Locked"
-            />
-            <p class="description">Only for the brave<br />can you crack it?</p>
-          </button>
+            <button class="button3">
+              <p class="title">hard</p>
+              <img
+                src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Locked.png"
+                alt="Locked"
+              />
+              <p class="description">Only for the brave<br />can you crack it?</p>
+            </button>
+          </Link>
         </div>
       </div>
 
