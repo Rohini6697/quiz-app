@@ -19,9 +19,11 @@
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 
 }
+
 .category-card>div img{
     width: 100px;
     border-radius: 50%;
+    border: 5px solid darkgoldenrod;
 }
 .category-card>div h3{
     color: white;

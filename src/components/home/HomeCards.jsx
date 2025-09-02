@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 // import { Link } from 'react-router-dom'
 import '../../styles/home/HomeCards.css'
-import RadialBarChart from '../charts/CircleChart'
+// import RadialBarChart from '../charts/CircleChart'
 import { RxCross2 } from "react-icons/rx"; 
+import '../../data/Questions'
 
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Questions } from '../../data/Questions';
+import { useQuiz } from '../context/QuizContext';
 
 const HomeCards = ({categories}) => {
   const [open,setOpen] = useState(false);
-  const [step,setStep] = useState('data');
+
+
+  const {setQuizData} = useQuiz()
+  const navigate = useNavigate()
+
+
+  const [step,setStep] = useState('category');
   const [selectedCategory,setSelectedCategory] = useState(null);
   const [selectedDifficulty,setSelectedDifficulty] = useState(null);
   const [filterdQuestions,setFilterdQuestions] = useState([])
@@ -21,24 +29,33 @@ const HomeCards = ({categories}) => {
 
   const handleDifficultySelect = (difficulty) => {
     setSelectedDifficulty(difficulty)
-  }
 
-  const QuestionFilterd = Questions.filter((q) => q.category === selectedCategory && q.difficulty === selectedDifficulty)
+    const QuestionFilterd = Questions.filter((q) => q.category.toLowerCase() === selectedCategory.toLowerCase() && q.difficulty.toLowerCase() === difficulty.toLowerCase())
     setFilterdQuestions(QuestionFilterd);
     setStep('Quiz')
+    setQuizData({
+      category:selectedCategory,
+      difficulty:difficulty,
+      questions:QuestionFilterd
+    })
+    navigate('/quiz')
 
+  }
+
+  
+  
   return (
     <>
       <div className='category-card-main'>
       {
         categories.map((data) => (
-          <div className='category-card' key={data} onClick={() => {
+          <div className='category-card' onClick={() => {
             setOpen(true);
-            handleCategorySelect(data)
+            handleCategorySelect(data.category)
             }}>
             <div>
-              <img src={data.image} alt={data.name}/>
-              <h3>{data.name}</h3>
+              <img src={data.image} alt={data.category}/>
+              <h3>{data.category}</h3>
             </div>
             <div>
               {/* <RadialBarChart/> */}
@@ -59,8 +76,8 @@ const HomeCards = ({categories}) => {
           
       <div class="main-box container">
         <div class="button-box container">
-          <Link to={`/quiz`}>
-            <button class="button">
+          {/* <Link to={`/quiz`}> */}
+            <button class="button" onClick={() => handleDifficultySelect('Easy')}>
               <p class="title">Easy</p>
               <img
               src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Handshake.png"
@@ -69,7 +86,7 @@ const HomeCards = ({categories}) => {
               <p class="description">Warm-up round<br />take it easy!</p>
             </button>
 
-            <button class="button2">
+            <button class="button2" onClick={() => handleDifficultySelect('Medium')}>
               <p class="title">Medium</p>
 
               <img
@@ -79,7 +96,7 @@ const HomeCards = ({categories}) => {
               <p class="description">Step it up<br />now it gets tricky!</p>
             </button>
 
-            <button class="button3">
+            <button class="button3" onClick={() => handleDifficultySelect('Hard')}>
               <p class="title">hard</p>
               <img
                 src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Locked.png"
@@ -87,7 +104,7 @@ const HomeCards = ({categories}) => {
               />
               <p class="description">Only for the brave<br />can you crack it?</p>
             </button>
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
 

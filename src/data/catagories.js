@@ -4,26 +4,26 @@
 export const Category = [
     {
         image : '/images/Categories/html.jpg',
-        name : 'Html and Css',
+        category : 'Html & Css',
     },
     {
         image : '/images/Categories/js.png',
-        name : 'Java Script',
+       category : 'Java Script',
     },
     {
         image : '/images/Categories/react.png',
-        name : 'React',
+        category : 'React',
     },
     {
         image :'/images/Categories/python.jpg',
-        name : 'Python',
+        category : 'Python',
     },
     {
         image : '/images/Categories/tailwind.png',
-        name : 'Tailwind',
+        category : 'Tailwind',
     },
     {
         image : '/images/Categories/cp.png',
-        name : 'C Programming',
+        category : 'C Programming',
     },
 ]

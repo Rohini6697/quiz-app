@@ -37,7 +37,7 @@ export const Questions = [
     "question": "Which method converts a JSON string to a JavaScript object?",
     "options": ["JSON.decode()", "JSON.parse()", "JSON.stringify()", "Object.fromJSON()"],
     "answer": "JSON.parse()",
-    "category": "JS",
+    "category": "Java Script",
     "difficulty": "Easy"
   },
   {
@@ -45,7 +45,7 @@ export const Questions = [
     "question": "What is the result of `typeof null` in JavaScript?",
     "options": ["\"object\"", "\"null\"", "\"undefined\"", "\"number\""],
     "answer": "\"object\"",
-    "category": "JS",
+    "category": "Java Script",
     "difficulty": "Medium"
   },
   {
@@ -53,7 +53,7 @@ export const Questions = [
     "question": "Which array method returns a new array with elements that pass a test?",
     "options": ["map()", "forEach()", "filter()", "reduce()"],
     "answer": "filter()",
-    "category": "JS",
+    "category": "Java Script",
     "difficulty": "Easy"
   },
   {
@@ -61,7 +61,7 @@ export const Questions = [
     "question": "What does `const` prevent in JavaScript?",
     "options": ["Reassignment of the binding", "Mutation of the object", "Scope hoisting", "Function calls"],
     "answer": "Reassignment of the binding",
-    "category": "JS",
+    "category": "Java Script",
     "difficulty": "Medium"
   },
 

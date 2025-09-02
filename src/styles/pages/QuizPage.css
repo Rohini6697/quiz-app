@@ -5,7 +5,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 90%;
+    gap: 80%;
     color: white;
     
     
@@ -13,6 +13,9 @@ body{
 .quiz-top h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: normal;
+    /* background-color: antiquewhite; */
+    display: flex;
+    width: 200px;
 }
 .quiz-box{
     border: 2px solid darkgoldenrod;
