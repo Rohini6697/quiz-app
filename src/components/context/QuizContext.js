@@ -6,8 +6,19 @@ const QuizContext = createContext();
 
 
 export const QuizProvider = ({children}) => {
+
+
+
+
+
+    
     const storedData = JSON.parse(localStorage.getItem('quizData'))
-    const [quizData,setQuizData] = useState({
+
+    
+
+
+    const [quizData,setQuizData] = useState(
+        storedData ||{
         category:null,
         difficulty: null,
         questions: []
