@@ -16,7 +16,7 @@ const Home = () => {
     if(search.trim() === '')
       setFilterd(Category)
     else{
-      const FilterdItem = Category.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
+      const FilterdItem = Category.filter((item) => item.category.toLowerCase().includes(search.toLowerCase()))
       setFilterd(FilterdItem)
     }
   },[search])

@@ -12,7 +12,16 @@ export const QuizProvider = ({children}) => {
 
 
     
-    const storedData = JSON.parse(localStorage.getItem('quizData'))
+let storedData = null;
+try {
+  const item = localStorage.getItem('quizData');
+  if (item) {
+    storedData = JSON.parse(item);
+  }
+} catch (error) {
+  console.error("Invalid quizData in localStorage:", error);
+  localStorage.removeItem('quizData'); // clear corrupted data
+}
 
     
 
